@@ -27,7 +27,7 @@ def main() -> None:
             for skill in skills:
                 Skill.objects.get_or_create(
                     name=skill.get("name"),
-                    defaults={"bonus":skill.get("bonus"),
+                    defaults={"bonus": skill.get("bonus"),
                               "race_id": race_id},
                 )
 
@@ -43,8 +43,11 @@ def main() -> None:
             guild_id = None
 
         Player.objects.get_or_create(
-            nickname=nickname, defaults={"email":email,
-            "bio":bio, "race_id":race_id, "guild_id":guild_id}
+            nickname=nickname, defaults={
+                "email": email, "bio": bio,
+                "race_id": race_id,
+                "guild_id": guild_id
+            }
         )
 
 
