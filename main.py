@@ -10,13 +10,13 @@ def main() -> None:
 
     for player, value in players.items():
         nickname = player
-        email = value["email"]
-        bio = value["bio"]
-        race = value["race"]
+        email = value.get("email")
+        bio = value.get("bio")
+        race = value.get("race")
         race_name = race.get("name")
         race_description = race.get("description", None)
         skills = race.get("skills")
-        guild = value["guild"]
+        guild = value.get("guild")
 
         Race.objects.get_or_create(
             name=race_name,
@@ -43,13 +43,12 @@ def main() -> None:
 
             Player.objects.create(
                 nickname=nickname, email=email, bio=bio, race_id=race_id,
-                guild_id=guild_id, created_at=datetime.datetime.now()
+                guild_id=guild_id
             )
         else:
             Player.objects.create(
                 nickname=nickname, email=email,
                 bio=bio, race_id=race_id, guild_id=None,
-                created_at=datetime.datetime.now()
             )
 
 
