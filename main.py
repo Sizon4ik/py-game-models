@@ -42,14 +42,13 @@ def main() -> None:
             guild_id = Guild.objects.get(name=guild_name).id
 
             Player.objects.create(
-                nickname=nickname, email=email, bio=bio,
-                                  race_id=race_id, guild_id=guild_id,
-                                  created_at=datetime.datetime.now()
+                nickname=nickname, email=email, bio=bio, race_id=race_id,
+                guild_id=guild_id, created_at=datetime.datetime.now()
             )
         else:
             Player.objects.create(
-                nickname=nickname, email=email, bio=bio,
-                race_id=race_id, guild_id=None,
+                nickname=nickname, email=email,
+                bio=bio, race_id=race_id, guild_id=None,
                 created_at=datetime.datetime.now()
             )
 
